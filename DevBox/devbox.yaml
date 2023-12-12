@@ -21,7 +21,7 @@ setupTasks:
       package: anaconda3
   - task: git-clone
     inputs:
-      repository: https://github.com/luxu-ms/azure-search-openai-demo.git
+      repositoryUrl: https://github.com/luxu-ms/azure-search-openai-demo.git
       directory: C:/temp
       branch: main 
   - task: powershell
@@ -33,4 +33,5 @@ setupTasks:
         code --install-extension github.copilot
         code --install-extension ms-vscode.powershell
         code --install-extension christian-kohler.npm-intellisense
+        code --install-extension ms-vscode.vscode-node-azure-pack
       runAsUser: true

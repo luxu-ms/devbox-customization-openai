@@ -1,25 +1,36 @@
 name: devbox-customization
-image: microsoftwindowsdesktop_windows-ent-cpc_win11-22h2-ent-cpc-m365@1.0.0
+image: MicrosoftVisualStudio_visualstudioplustools_vs-2022-ent-general-win11-m365-gen2
 hostInformation: general_i_8c32gb256ssd_v2
-supportsHibernation: false
+supportsHibernation: true
 setupTasks:
-  - task: chocolatey
-  - task: install-package
+  - task: choco
     inputs:
-      package: git.install
-  - task: install-package
+      package: git
+  - task: choco
     inputs:
       package: vscode
-  - task: install-package
-    inputs:
-      package: azure-cli
-  - task: install-package
+  - task: choco
     inputs:
       package: python3
-  - task: install-package
+      version: 3.10.11
+  - task: choco
     inputs:
       package: nodejs
-  - task: install-package
+  - task: choco
     inputs:
       package: anaconda3
-  - task: customize
+  - task: git-clone
+    inputs:
+      repository: https://github.com/luxu-ms/azure-search-openai-demo.git
+      directory: C:/temp
+      branch: main 
+  - task: powershell
+    inputs:
+      command: |
+        # Install VSCode extensions
+        code --install-extension ms-python.python
+        code --install-extension eamodio.gitlens
+        code --install-extension github.copilot
+        code --install-extension ms-vscode.powershell
+        code --install-extension christian-kohler.npm-intellisense
+      runAsUser: true

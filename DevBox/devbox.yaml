@@ -18,6 +18,9 @@ setupTasks:
       package: nodejs
   - task: choco
     inputs:
+      package: azd
+  - task: choco
+    inputs:
       package: anaconda3
   - task: git-clone
     inputs:
@@ -34,4 +37,7 @@ setupTasks:
         code --install-extension ms-vscode.powershell
         code --install-extension christian-kohler.npm-intellisense
         code --install-extension ms-vscode.vscode-node-azure-pack
+        code --install-extension ms-azuretools.azure-dev
+
+        code c:/temp/azure-search-openai-demo
       runAsUser: true
